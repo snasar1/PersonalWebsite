@@ -1,441 +1,492 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Personal Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Website</title>
+ 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #fef2e7;
+        }
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      color: #333;
-      background-color: #fef2e7;
-    }
+        .hero-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 400px;
+            background: linear-gradient(45deg, #ffb347, #ffd699);
+        }
 
-    .hero-section {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 400px;
-      background: linear-gradient(45deg, #ffb347, #ffd699);
-    }
+        .hero-text {
+            text-align: center;
+            color: #ff6347;
+            font-size: 36px;
+            font-weight: bold;
+        }
 
-    .hero-text {
-      text-align: center;
-      color: #ff6347;
-      font-size: 36px;
-      font-weight: bold;
-    }
+        .hero-text p {
+            font-size: 24px; /* Updated font size for the paragraph */
+            margin-top: 10px; /* Added margin for separation */
+        }
 
-    .hero-text p {
-      font-size: 24px;
-      /* Updated font size for the paragraph */
-      margin-top: 10px;
-      /* Added margin for separation */
-    }
+        h2.highlight {
+            background: linear-gradient(45deg, #ffd699, #ffb347);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            border: 2px solid #ff6347;
+            padding: 10px;
+            display: inline-block;
+            margin-top: 40px;
+        }
 
-    h2.highlight {
-      background: linear-gradient(45deg, #ffd699, #ffb347);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      border: 2px solid #ff6347;
-      padding: 10px;
-      display: inline-block;
-      margin-top: 40px;
-    }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-gap: 20px;
+            margin-top: 30px;
+        }
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      grid-gap: 20px;
-      margin-top: 30px;
-    }
+        .gallery img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-    .gallery img {
-      max-width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
+        #contact-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+            padding: 20px;
+            background: linear-gradient(45deg, #ffb347, #ffd699);
+            border-radius: 10px;
+        }
 
-    #contact-form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 50px;
-      padding: 20px;
-      background: linear-gradient(45deg, #ffb347, #ffd699);
-      border-radius: 10px;
-    }
+        /* Additional CSS for Animations */
 
-    /* Additional CSS for Animations */
+        .animate__animated {
+            animation-duration: 1s;
+        }
 
-    .animate__animated {
-      animation-duration: 1s;
-    }
+        .animate__bounceInDown {
+            animation-name: bounceInDown;
+        }
 
-    .animate__bounceInDown {
-      animation-name: bounceInDown;
-    }
+        @keyframes bounceInDown {
+            0% {
+                transform: translateY(-100%);
+            }
+            60% {
+                transform: translateY(10%);
+            }
+            80% {
+                transform: translateY(-5%);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
 
-    @keyframes bounceInDown {
-      0% {
-        transform: translateY(-100%);
-      }
+        /* Additional CSS for Navigation Menu */
 
-      60% {
-        transform: translateY(10%);
-      }
+        nav ul li a {
+            position: relative;
+            transition: color 0.3s, background-color 0.3s, box-shadow 0.3s;
+        }
 
-      80% {
-        transform: translateY(-5%);
-      }
+        nav ul li a::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: #333;
+            transition: width 0.3s;
+        }
 
-      100% {
-        transform: translateY(0);
-      }
-    }
+        nav ul li a:hover {
+            background-color: #ffd699;
+            color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transform: translateY(-3px);
+        }
 
-    /* Additional CSS for Navigation Menu */
+        /* Additional CSS for Social Icons */
 
-    nav ul li a {
-      position: relative;
-      transition: color 0.3s, background-color 0.3s, box-shadow 0.3s;
-    }
+        .social-icons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+        }
 
-    nav ul li a::before {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0;
-      height: 2px;
-      background-color: #333;
-      transition: width 0.3s;
-    }
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 20px;
+            color: #fff;
+            background-color: #ff6347;
+            border-radius: 50%;
+            margin: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+        }
 
-    nav ul li a:hover {
-      background-color: #ffd699;
-      color: #fff;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transform: translateY(-3px);
-    }
+        .social-icons a:hover {
+            background-color: #ffb347;
+            transform: scale(1.2);
+        }
 
-    /* Additional CSS for Social Icons */
+        /* Additional CSS for Typing Animation */
 
-    .social-icons {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-    }
+        .typing-animation {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 0.15em solid #ff6347;
+            animation: typing 5s steps(40) infinite, blink-caret 0.75s step-end infinite;
+            animation-delay: 2s; /* Delay before re-typing starts */
+        }
 
-    .social-icons a {
-      display: inline-block;
-      width: 40px;
-      height: 40px;
-      line-height: 40px;
-      text-align: center;
-      font-size: 20px;
-      color: #fff;
-      background-color: #ff6347;
-      border-radius: 50%;
-      margin: 5px;
-      text-decoration: none;
-      transition: background-color 0.3s, transform 0.3s;
-    }
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
 
-    .social-icons a:hover {
-      background-color: #ffb347;
-      transform: scale(1.2);
-    }
+        @keyframes blink-caret {
+            from,
+            to {
+                border-color: transparent;
+            }
+            50% {
+                border-color: #ff6347;
+            }
+        }
+		
+		.btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #ff6347;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
 
-    /* Additional CSS for Typing Animation */
+        .btn:hover {
+            background-color: #ffb347;
+        }
+		
+		/* Feedback Form Styles */
+        .feedback-form {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-    .typing-animation {
-      overflow: hidden;
-      white-space: nowrap;
-      border-right: 0.15em solid #ff6347;
-      animation: typing 5s steps(40) infinite, blink-caret 0.75s step-end infinite;
-      animation-delay: 2s;
-      /* Delay before re-typing starts */
-    }
+        /* Interactive Elements */
+        .interactive-element {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f0f8ff;
+            border: 1px solid #b0c4de;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
 
-    @keyframes typing {
-      from {
-        width: 0;
-      }
+        .interactive-element:hover {
+            background-color: #b0c4de;
+        }
 
-      to {
-        width: 100%;
-      }
-    }
+        /* Section Separation */
+        .section {
+            padding: 40px 0;
+            background-color: #f5f5f5;
+            border-bottom: 1px solid #ddd;
+        }
 
-    @keyframes blink-caret {
+        /* Call to Action Button */
+        .cta-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff6347;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
 
-      from,
-      to {
-        border-color: transparent;
-      }
+        .cta-btn:hover {
+            background-color: #ffb347;
+        }
 
-      50% {
-        border-color: #ff6347;
-      }
-    }
-  </style>
+        /* Additional Navigation Styles */
+        nav {
+            background-color: #333;
+            color: #fff;
+        }
 
-  <script>
-    // JavaScript function to change the background color of the hero section
-    function changeHeroBackgroundColor() {
-      var heroSection = document.querySelector('.hero-section');
-      heroSection.style.background = 'linear-gradient(45deg, #ff8c69, #ffd699)';
-    }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
 
-    function resetHeroBackgroundColor() {
-      var heroSection = document.querySelector('.hero-section');
-      heroSection.style.background = 'linear-gradient(45deg, #ffb347, #ffd699)';
-    }
+        nav ul li {
+            padding: 10px;
+            margin: 0;
+        }
 
-    // JavaScript function to validate the contact form
-    function validateContactForm() {
-      var name = document.getElementById('name').value;
-      var email = document.getElementById('email').value;
-      var message = document.getElementById('message').value;
+        /* Additional Whitespace */
+        .content {
+            padding: 20px;
+        }
 
-      if (name.trim() === '' || email.trim() === '' || message.trim() === '') {
-        alert('Please fill out all the fields in the contact form.');
-        return false;
-      }
-      return true;
-    }
-  </script>
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            /* Adjust styles for smaller screens */
+        }
+		
+		
+    </style>
+	
 </head>
-
 <body>
-  <header>
-
-    <div class="nav-container">
-      <h1 class="animate__animated animate__bounceInDown" style="color: #ff6347;">Welcome to My Website</h1>
-      <nav>
-        <ul>
-          <li><a href="#about">About Me</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#work-experience">Work Experience</a></li>
-          <li><a href="#involvements">Involvements</a></li>
-        </ul>
-      </nav>
+<header>
+	<div class="nav-container">
+        <h1 class="animate__animated animate__bounceInDown" style="color: #ff6347;">Welcome to My Website</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#work-experience">Work Experience</a></li>
+                <li><a href="#involvements">Involvements</a></li>
+            </ul>
+        </nav>
     </div>
 
-  </header>
+</header>
 
-  <main>
+<main>
     <section class="hero-section">
-
-      <div class="hero-text">
-        <p class="typing-animation">Get to know me and my journey as a Computer Science student.</p>
-      </div>
-
-    </section>
+        
+		<div class="hero-text">
+            <p class="typing-animation">Get to know me and my journey as a Computer Science student.</p>
+        </div>
+    
+	</section>
 
     <section id="about">
-      <h2 class="highlight">About Me</h2>
-      <img src="profile.jpg" alt="Profile Picture">
-      <p class="highlight">
-        Hello! I am Sumira Nasar, a Computer Science student at Penn State Abington. I am passionate about programming
-        and problem-solving. My goal is to become a software engineer and contribute to the tech industry with
-        innovative solutions. With strong proficiency in programming languages like Java, HTML, and Python, coupled with
-        experience in web development, I am eager to leverage my knowledge and passion for coding to contribute to a
-        dynamic team and gain valuable industry experience.
-      </p>
+        <h2 class="highlight">About Me</h2>
+        <img src="profile.jpg" alt="Profile Picture">
+        <p class="highlight">
+            Hello! I am Sumira Nasar, a Computer Science student at Penn State Abington. I am passionate about programming and problem-solving. My goal is to become a software engineer and contribute to the tech industry with innovative solutions. With strong proficiency in programming languages like Java, HTML, and Python, coupled with experience in web development, I am eager to leverage my knowledge and passion for coding to contribute to a dynamic team and gain valuable industry experience.
+        </p>
     </section>
 
     <section id="education">
-      <h2 class="highlight">Education</h2>
-      <ul>
-
-        <li>
-          <h3>Penn State University - Abington</h3>
-          <p>Bachelor of Science in Computer Science, minor in Management</p>
-          <p>Graduation: May 2024</p>
-        </li>
-
-        <li>
-          <h3>George Washington High School</h3>
-          <p>High School Diploma</p>
-          <p>Graduated: May 2019</p>
-        </li>
-
-      </ul>
+        <h2 class="highlight">Education</h2>
+        <ul>
+            
+			<li>
+                <h3>Penn State University - Abington</h3>
+                <p>Bachelor of Science in Computer Science, minor in Management</p>
+                <p>Graduation: May 2024</p>
+            </li>
+            
+			<li>
+                <h3>George Washington High School</h3>
+                <p>High School Diploma</p>
+                <p>Graduated: May 2019</p>
+            </li>
+        
+		</ul>
     </section>
 
     <section id="skills">
-      <h2 class="highlight">Skills</h2>
-
-      <ul class="skills-list">
-        <li>Programming Languages: C, C++, Java, Python</li>
-        <li>Web Development: HTML, CSS, JavaScript</li>
-        <li>Database: SQL</li>
-        <li>Operating Systems: Windows, Linux</li>
-        <li>Data Structures and Algorithms</li>
-      </ul>
-
-    </section>
+        <h2 class="highlight">Skills</h2>
+        
+		<ul class="skills-list">
+            <li>Programming Languages: C++, Java, Python</li>
+            <li>Web Development: HTML, CSS, JavaScript</li>
+            <li>Database: SQL</li>
+            <li>Operating Systems: Windows, Linux</li>
+            <li>Data Structures and Algorithms</li>
+        </ul>
+    
+	</section>
 
     <section id="work-experience">
-      <h2 class="highlight">Work Experience</h2>
-      <ul>
-
-        <li>
-          <h3>Vector Marketing Bucks Co</h3>
-          <p>Sales Representative</p>
-          <p>March 2020 - Present</p>
-          <ul>
-            <li>Achieve personal sales goals by scheduling appointments with potential customers</li>
-            <li>Conducting product demos, writing up orders, and maintaining a database to track customer activities for
-              analysis</li>
-            <li>Sustain professional connections to seek out new opportunities and practiced goal-setting strategies
-            </li>
-          </ul>
-        </li>
-
-        <li>
-          <h3>Pennsylvania State University - Abington</h3>
-          <p>Camp counselor</p>
-          <p>Summer 2023</p>
-          <ul>
-            <li>Supervised and engaged campers in interactive activities related to computer science and programming.
-            </li>
-            <li>Facilitated learning and exploration of technical concepts through engaging projects and games.</li>
-            <li>Ensured the safety and well-being of campers while fostering a positive and inclusive camp environment.
-            </li>
-          </ul>
-        </li>
-
-        <li>
-          <h3>Burlington - Coats and Factory</h3>
-          <p>Associate</p>
-          <p>May 2021 - June 2022</p>
-          <ul>
-            <li>Assisted customers with inquiries, enhancing overall satisfaction and fostering a positive shopping
-              environment.</li>
-            <li>Arranged and displayed merchandise, ensuring a visually appealing and organized store layout.</li>
-            <li>Processed payments and contributed to training new hires, promoting a cohesive team atmosphere</li>
-          </ul>
-        </li>
-
-        <li>
-          <h3>College Opportunity Summer Extensive Cohort Program</h3>
-          <p>Student Participant</p>
-          <p>Summer 2023</p>
-          <ul>
-            <li>Engaged in an intensive summer program focused on advanced computer science topics and real-world
-              applications.</li>
-            <li>Collaborated with a diverse group of students on challenging coding projects using JavaScript, HTML, and
-              CSS.</li>
-            <li>Attended workshops and seminars to enhance technical and professional skills, including effective
-              communication and time management.</li>
-          </ul>
-        </li>
-
-        <li>
-          <h3>Sitel - Intuit TurboTax (Foundever)</h3>
-          <p>Customer Service Agent (Contract) </p>
-          <p>January 2023 - April 2023</p>
-          <ul>
-            <li>Provided technical support to customers via phone, resolving software navigation questions promptly.
-            </li>
-            <li>Assisted customers in locating prior years' returns and amendments, ensuring a positive user experience.
-            </li>
-            <li>Maintained a caring and empathetic approach during interactions, representing the Intuit brand
-              effectively.</li>
-          </ul>
-        </li>
-
-      </ul>
+        <h2 class="highlight">Work Experience</h2>
+        <ul>
+		
+				<li>
+                    <h3>Vector Marketing Bucks Co</h3>
+                    <p>Sales Representative</p>
+                    <p>March 2020 - Present</p>
+                    <ul>
+                        <li>Achieve personal sales goals by scheduling appointments with potential customers</li>
+                        <li>Conducting product demos, writing up orders, and maintaining a database to track customer activities for analysis</li>
+                        <li>Sustain professional connections to seek out new opportunities and practiced goal-setting strategies</li>
+                    </ul>
+                </li>
+				
+				<li>
+                    <h3>Pennsylvania State University - Abington</h3>
+                    <p>Camp counselor</p>
+                    <p>Summer 2023</p>
+                    <ul>
+                        <li>Supervised and engaged campers in interactive activities related to computer science and programming.</li>
+                        <li>Facilitated learning and exploration of technical concepts through engaging projects and games.</li>
+                        <li>Ensured the safety and well-being of campers while fostering a positive and inclusive camp environment.</li>
+                    </ul>
+                </li>
+				
+				<li>
+                    <h3>Burlington - Coats and Factory</h3>
+                    <p>Associate</p>
+                    <p>May 2021 - June 2022</p> 
+                    <ul>
+                        <li>Assisted customers with inquiries, enhancing overall satisfaction and fostering a positive shopping environment.</li>
+                        <li>Arranged and displayed merchandise, ensuring a visually appealing and organized store layout.</li>
+                        <li>Processed payments and contributed to training new hires, promoting a cohesive team atmosphere</li>
+                    </ul>
+                </li>
+				
+				<li>
+                    <h3>College Opportunity Summer Extensive Cohort Program</h3>
+                    <p>Student Participant</p>
+                    <p>Summer 2023</p>
+                    <ul>
+                        <li>Engaged in an intensive summer program focused on advanced computer science topics and real-world applications.</li>
+                        <li>Collaborated with a diverse group of students on challenging coding projects using JavaScript, HTML, and CSS.</li>
+                        <li>Attended workshops and seminars to enhance technical and professional skills, including effective communication and time management.</li>
+                    </ul>
+                </li>
+				
+				<li>
+                    <h3>Sitel - Intuit TurboTax (Foundever)</h3>
+                    <p>Customer Service Agent (Contract) </p>
+                    <p>January 2023 - April 2023</p> 
+                    <ul>
+                        <li>Provided technical support to customers via phone, resolving software navigation questions promptly.</li>
+                        <li>Assisted customers in locating prior years' returns and amendments, ensuring a positive user experience.</li>
+                        <li>Maintained a caring and empathetic approach during interactions, representing the Intuit brand effectively.</li>
+                    </ul>
+                </li>
+				
+        </ul>
     </section>
 
     <section id="involvements">
-      <h2 class="highlight">Involvements</h2>
-      <ul>
-
-        <li>
-          <h3>Computer Science Club</h3>
-          <p class="involvement">Member</p>
-          <p class="involvement">2018 - Present</p>
-          <ul>
-            <li>Participated in coding competitions and hackathons</li>
-            <li>Collaborated with fellow members on programming projects</li>
-            <li>Organized workshops and tutorials to share knowledge and skills</li>
-          </ul>
-        </li>
-
-        <li>
-          <h3>Abington Campus Entertainment Organization</h3>
-          <p class="involvement">Member</p>
-          <p class="involvement">2019 - Present</p>
-          <ul>
-            <li>Assisted in organizing events and guest speaker sessions</li>
-            <li>Promoted diversity and inclusion in the entertainment field</li>
-            <li>Provided mentorship and support to leaders of the organization</li>
-          </ul>
-        </li>
-
-        <li>
-          <h3>Career and Professional Development</h3>
-          <p class="involvement">Member</p>
-          <p class="involvement">2022 - Present</p>
-          <ul>
-            <li>Assisted in organizing events and guest speaker sessions</li>
-            <li>Provided mentorship and support to students and fellow members</li>
-          </ul>
-        </li>
-
-      </ul>
+        <h2 class="highlight">Involvements</h2>
+        <ul>
+            
+			<li>
+                <h3>Computer Science Club</h3>
+                <p class="involvement">Member</p>
+                <p class="involvement">2018 - Present</p>
+                <ul>
+                    <li>Participated in coding competitions and hackathons</li>
+                    <li>Collaborated with fellow members on programming projects</li>
+                    <li>Organized workshops and tutorials to share knowledge and skills</li>
+                </ul>
+            </li>
+            
+			<li>
+                <h3>Abington Campus Entertainment Organization</h3>
+                <p class="involvement">Member</p>
+                <p class="involvement">2019 - Present</p>
+                <ul>
+                    <li>Assisted in organizing events and guest speaker sessions</li>
+                    <li>Promoted diversity and inclusion in the entertainment field</li>
+                    <li>Provided mentorship and support to leaders of the organization</li>
+                </ul>
+            </li>
+            
+			<li>
+                <h3>Career and Professional Development</h3>
+                <p class="involvement">Member</p>
+                <p class="involvement">2022 - Present</p>
+                <ul>
+                    <li>Assisted in organizing events and guest speaker sessions</li>
+                    <li>Provided mentorship and support to students and fellow members</li>
+                </ul>
+            </li>
+       
+	   </ul>
     </section>
-    <section id="contact">
-      <div id="contact-form">
-        <h2 class="highlight" style="color: #4A4A4A; font-size: 30px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">Contact
-          Me</h2>
-        <form onsubmit="return validateContactForm()">
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name" required>
+	
+	
+	<!-- Interactive Elements -->
+    <div class="content">
+        <div class="interactive-element">
+            Click me to see something cool!
+        </div>
+        <div class="interactive-element">
+            Try hovering over me!
+        </div>
+    </div>
 
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required>
-
-          <label for="message">Message:</label>
-          <textarea name="message" id="message" placeholder="Enter your message" required></textarea>
-
-          <input type="submit" value="Submit">
+    <!-- Feedback Form -->
+    <div class="content feedback-form">
+        <h2>Give Us Your Feedback</h2>
+        <form>
+            <label for="feedback">Your Feedback:</label>
+            <textarea id="feedback" name="feedback" rows="4" required></textarea>
+            <button class="cta-btn" type="submit">Submit Feedback</button>
         </form>
-      </div>
-
-    </section>
-
-  </main>
-
-  <footer class="footer" style="background: linear-gradient(45deg, #FFC0CB, #FFA07A); color: #964B00;">
-
-    <div class="copy-tag">
-      <p>&copy; 2023 My Personal Website. All rights reserved.</p>
     </div>
 
-    <div class="contact-info">
-      <h3 style="color: #9370db;">Contact Information:</h3>
-      <ul>
-        <li>Email: sumiranasar@gmail.com</li>
-        <li>LinkedIn: <a href="https://www.linkedin.com/in/sumira-n-969bba197/" target="_blank"
-            style="color: #9370db;">https://www.linkedin.com/in/sumira-n-969bba197/</a></li>
-        <li>GitHub: <a href="https://github.com/snasar1" target="_blank"
-            style="color: #9370db;">https://github.com/snasar1</a></li>
-      </ul>
+    <!-- Call to Action Button -->
+    <div class="content">
+        <div class="cta-btn-container">
+            <a href="#contact" class="cta-btn">Contact Me</a>
+        </div>
     </div>
 
 
-  </footer>
+</main>
+
+<footer class="footer" style="background: linear-gradient(45deg, #FFC0CB, #FFA07A); color: #333;">
+	<div class="copy-tag">
+        <p>&copy; 2023 My Personal Website. All rights reserved.</p>
+    </div>
+	<div class="contact-info">
+        <h3 style="color: #9370db;">Contact Information:</h3>
+        <ul>
+            <li>Email: sumiranasar@gmail.com</li>
+            <li>LinkedIn: <a href="https://www.linkedin.com/in/sumira-n-969bba197/" target="_blank" style="color: #9370db;">https://www.linkedin.com/in/sumira-n-969bba197/</a></li>
+            <li>GitHub: <a href="https://github.com/snasar1" target="_blank" style="color: #9370db;">https://github.com/snasar1</a></li>
+        </ul>
+    </div>
+	  <div class="buttons" style="text-align: center; margin-top: 20px;">
+        <a href="#about" class="btn">About</a>
+        <a href="#education" class="btn">Education</a>
+        <a href="#skills" class="btn">Skills</a>
+        <a href="#work-experience" class="btn">Work Experience</a>
+        <a href="#involvements" class="btn">Involvements</a>
+        <a href="#" class="btn">Back to Top</a>
+    </div>
+</footer>
 </body>
-
 </html>
